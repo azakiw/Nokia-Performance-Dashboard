@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      # Start a fresh workflow run for retries; re-running this run can leave
+      # multiple github-pages artifacts attached to the same run.
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
