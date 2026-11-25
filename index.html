@@ -61,8 +61,8 @@ let summaries=Object.values(groups).sort((a,b)=>a.time.localeCompare(b.time)||a.
      issues+=bad.length;
      kpiLines.push('<div class="ne-kpi"><span class="ne-icon">⚠️</span><span><b>'+d.label+'</b> ('+d.threshold+') | '+bad.map(r=>r.cell+' ('+r[d.key]+')').join(', ')+'</span></div>');
    }else if(present.length){
-     let vals=[...new Set(present.map(r=>r[d.key]))];
-     let valueText=vals.length===1?' ('+vals[0]+')':' (Normal · '+present.length+' NRCEL)';
+     let vals=[...new Set(present.map(r=>r[d.key]))].sort((a,b)=>a-b);
+     let valueText=' (Normal · '+vals.join(', ')+')';
      kpiLines.push('<div class="ne-kpi"><span class="ne-icon">✅</span><span>'+d.label+valueText+'</span></div>');
    }else{
      kpiLines.push('<div class="ne-kpi"><span class="ne-icon">—</span><span>'+d.label+' (N/A)</span></div>');
